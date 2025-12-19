@@ -1,0 +1,318 @@
+/* === Clean CSS for the anniversary page === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'Georgia', serif; line-height: 1.6; color: #111; background: #f9f6f7; }
+
+.header { background: #ff69b4; padding: 0.9rem 1.25rem; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+.logo { color: #fff; font-size: 1.4rem; font-weight: 700; font-family: 'Arial', sans-serif; }
+.nav ul { list-style: none; display: flex; gap: 1rem; }
+.nav a { color: #fff; text-decoration: none; font-weight: 700; font-family: 'Arial', sans-serif; }
+.nav a:hover { color: #ffd700; }
+
+.hero-section { background: linear-gradient(135deg, rgba(51,51,51,0.6), rgba(85,85,85,0.6)), url('img/gorra.jpeg'); background-size: cover; background-position: center; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding-top: 80px; }
+.hero-content h2 { font-size: 3rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.45); }
+.hero-content p { font-size: 1.05rem; margin-bottom: 0.25rem; }
+
+.countdown { font-size: 1.6rem; margin-top: 0.9rem; display: inline-block; background: rgba(255,105,180,0.12); padding: 0.6rem 0.9rem; border-radius: 10px; }
+.countdown-inner { display: flex; gap: 0.6rem; align-items: center; }
+.countdown-item { display: flex; flex-direction: column; align-items: center; min-width: 48px; }
+.countdown-item .num { font-weight: 700; background: #fff; color: #111; padding: 0.15rem 0.4rem; border-radius: 6px; }
+.countdown-item .label { font-size: 0.75rem; color: #ff69b4; }
+
+@media (max-width: 480px) { .hero-content h2 { font-size: 2rem; } .countdown-inner { gap: 0.4rem; } }
+
+/* heart confetti (simple) */
+.heart { position: fixed; top: -40px; width: 18px; height: 18px; background: linear-gradient(45deg,#ff7aa2,#ff2d6f); z-index: 1500; pointer-events: none; border-radius: 4px; animation: heart-fall 3000ms linear forwards, heart-tilt 2000ms ease-in-out infinite; }
+@keyframes heart-fall { 0% { transform: translateY(-10vh) scale(0.8) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(110vh) scale(1) rotate(360deg); opacity: 0.9; } }
+@keyframes heart-tilt { 0% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } 100% { transform: rotate(-10deg); } }
+
+.content-section { padding: 4rem 1.25rem; max-width: 1200px; margin: 0 auto; }
+.section-title { font-size: 2.2rem; color: #ff69b4; text-align: center; margin-bottom: 1.25rem; font-family: 'Georgia', serif; }
+.section-title::after { content: ''; display: block; width: 50px; height: 3px; background: #ff69b4; margin: 0.5rem auto; }
+
+.container { max-width: 900px; margin: 0 auto; }
+.message-box { background: rgba(255,255,255,0.98); padding: 1.2rem; border-left: 6px solid #ff69b4; border-radius: 10px; color: #111; font-style: italic; box-shadow: 0 6px 18px rgba(0,0,0,0.06); margin-bottom: 1rem; }
+.message-box p { line-height: 1.6; }
+.signature { text-align: right; color: #ff69b4; font-weight: 700; }
+
+.moments-grid, .trip-gallery, .travel-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+.photo-placeholder { width: 100%; height: 240px; background-color: #eee; background-size: cover; background-position: center; border-radius: 10px; transition: transform 0.35s ease; display: flex; align-items: flex-end; padding: 12px; color: #fff; font-weight: 700; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+.photo-placeholder:hover { transform: scale(1.02); }
+
+footer { text-align: center; padding: 36px 18px; background: #111; color: #fff; }
+
+@media (max-width: 768px) { .nav { padding: 0 1rem; } .nav ul { gap: 0.6rem; } }
+
+/* end of file */
+
+.message-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.signature {
+    font-style: italic;
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+.history-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.history-section .section-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.history-section .story-text {
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.history-section .photo-placeholder {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .history-section .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .history-section .section-title {
+        text-align: center;
+    }
+
+    .history-section .story-text {
+        flex: 1 1 100%;
+        text-align: left;
+    }
+
+    .history-section .photo-placeholder {
+        flex: 0 0 auto;
+        width: 80%;
+        height: 180px;
+    }
+}
+
+/* Photo Placeholders */
+.photo-placeholder {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin: 1rem 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+.photo-placeholder span {
+    background: rgba(255,255,255,0.8);
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    z-index: 2;
+    position: relative;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Trip Gallery */
+.trip-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.trip-gallery .photo-placeholder {
+    width: 150px;
+    height: 150px;
+}
+
+/* Moments Grid */
+.moments-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.moments-grid .photo-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .moments-grid .photo-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+}
+.moto-note {
+    text-align: center;
+    font-style: italic;
+    color: #ccc;
+    margin-top: 2rem;
+    font-family: 'Georgia', serif;
+}
+
+/* Travel Section */
+.travel-list ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.travel-list li {
+    background: #444;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    text-align: center;
+    border: 1px solid #555;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.travel-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.travel-list img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.travel-list p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+.travel-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.travel-photos .photo-placeholder {
+    overflow: hidden;
+    height: 200px;
+}
+
+.travel-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.travel-photos img:hover {
+    transform: scale(1.05);
+}
+
+/* Quote */
+.quote-text {
+    text-align: center;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #ff69b4;
+    margin: 2rem 0;
+    font-family: 'Georgia', serif;
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: #ccc;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 4rem;
+    border-top: 1px solid #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav ul {
+        margin-top: 1rem;
+    }
+
+    .nav ul li {
+        margin-left: 1rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .content-section {
+        padding: 2rem 1rem;
+    }
+
+    .photo-placeholder {
+        height: 200px;
+    }
+
+    .travel-list ul {
+        grid-template-columns: 1fr;
+    }
+
+    .travel-photos {
+        grid-template-columns: 1fr;
+    }
+}
