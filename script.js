@@ -4,14 +4,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function formatNumber(n) { return String(n).padStart(2, '0'); }
 
+  function buildHtml(days, hours, minutes, seconds, prefix) {
+    return `
+      <div class="countdown-inner">
+        <div class="countdown-item"><div class="num">${days}</div><div class="label">Días</div></div>
+        <div class="countdown-item"><div class="num">${formatNumber(hours)}</div><div class="label">Horas</div></div>
+        <div class="countdown-item"><div class="num">${formatNumber(minutes)}</div><div class="label">Min</div></div>
+        <div class="countdown-item"><div class="num">${formatNumber(seconds)}</div><div class="label">Seg</div></div>
+      </div>
+      <div style="margin-top:8px;font-size:0.9rem;color:rgba(255,255,255,0.9);">${prefix}</div>
+    `;
+  }
+
   function updateCountdown() {
     if (!el) return;
     const now = new Date();
-    let diff = target - now;
-    if (diff <= 0) {
-      el.textContent = '¡Feliz Aniversario!';
-      clearInterval(timer);
-      return;
+    // Always count up from target date. Before target, show zeros and a note.
+    let diff = now - target;
+    let prefix = 'Tiempo desde el 19/12/2025';
+    if (diff < 0) {
+      diff = 0;
+      prefix = 'Comenzará el 19/12/2025';
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -22,18 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     diff -= minutes * (1000 * 60);
     const seconds = Math.floor(diff / 1000);
 
-    el.innerHTML = `
-      <div class="countdown-inner">
-        <div class="countdown-item"><div class="num">${days}</div><div class="label">Días</div></div>
-        <div class="countdown-item"><div class="num">${formatNumber(hours)}</div><div class="label">Horas</div></div>
-        <div class="countdown-item"><div class="num">${formatNumber(minutes)}</div><div class="label">Min</div></div>
-        <div class="countdown-item"><div class="num">${formatNumber(seconds)}</div><div class="label">Seg</div></div>
-      </div>
-    `;
+    el.innerHTML = buildHtml(days, hours, minutes, seconds, prefix);
   }
 
   updateCountdown();
-  const timer = setInterval(updateCountdown, 1000);
+  setInterval(updateCountdown, 1000);
 
   // Simple heart confetti (lightweight)
   function spawnHeart() {
